@@ -1,5 +1,5 @@
 import { resolve } from "path";
-import { writeFileSync } from "fs";
+import { existsSync, mkdirSync, writeFileSync } from "fs";
 import { PluginOption, defineConfig } from "vite";
 import manifest from "./src/manifest";
 
@@ -10,6 +10,10 @@ const createManifest = (): PluginOption => {
   return {
     name: "create-manifest",
     buildEnd() {
+      if (!existsSync(outDir)) {
+        mkdirSync(outDir);
+      }
+
       const manifestPath = resolve(outDir, "manifest.json");
       writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
     },
