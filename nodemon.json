@@ -1,0 +1,9 @@
+{
+  "env": {
+    "__DEV__": "true"
+  },
+  "watch": ["src", "vite.config.ts"],
+  "ext": "html,ts",
+  "ignore": [],
+  "exec": "vite build"
+}
