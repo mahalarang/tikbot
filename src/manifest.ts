@@ -20,7 +20,7 @@ const manifest: chrome.runtime.ManifestV3 = {
   },
   content_scripts: [
     {
-      matches: ["http://*/*", "https://*/*", "<all_urls>"],
+      matches: ["https://*.tiktok.com/*"],
       js: ["src/content/index.js"],
     },
   ],
