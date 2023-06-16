@@ -3,7 +3,7 @@
     "__DEV__": "true"
   },
   "watch": ["src", "vite.config.ts"],
-  "ext": "html,ts",
+  "ext": "html,ts,tsx,css",
   "ignore": [],
   "exec": "vite build"
 }

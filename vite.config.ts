@@ -1,27 +1,23 @@
 import { resolve } from "path";
-import { existsSync, mkdirSync, writeFileSync } from "fs";
-import { PluginOption, defineConfig } from "vite";
-import manifest from "./src/manifest";
-
-const root = resolve(__dirname, "src");
-const outDir = resolve(__dirname, "build_extension");
-
-const createManifest = (): PluginOption => {
-  return {
-    name: "create-manifest",
-    buildEnd() {
-      if (!existsSync(outDir)) {
-        mkdirSync(outDir);
-      }
-
-      const manifestPath = resolve(outDir, "manifest.json");
-      writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
-    },
-  };
-};
+import { defineConfig, splitVendorChunkPlugin } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import { outDir, root } from "./utils/path";
+import createManifest from "./utils/createManifestPlugin";
 
 export default defineConfig({
-  plugins: [createManifest()],
+  resolve: {
+    alias: {
+      "@": root,
+      "@components": resolve(root, "components"),
+    },
+  },
+  plugins: [
+    react({
+      jsxImportSource: "@emotion/react",
+    }),
+    splitVendorChunkPlugin(),
+    createManifest(),
+  ],
   build: {
     outDir,
     sourcemap: process.env.__DEV__ === "true",
@@ -34,6 +30,7 @@ export default defineConfig({
       },
       output: {
         entryFileNames: `src/[name]/index.js`,
+        manualChunks: undefined,
       },
     },
   },
