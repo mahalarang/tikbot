@@ -1,0 +1,1 @@
+export const SET_SELECTED_MENU_ID = "global/SET_SELECTED_MENU_ID";

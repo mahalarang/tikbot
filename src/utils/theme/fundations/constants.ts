@@ -1,5 +1,5 @@
 const constants = {
-  popupWidth: "400px",
+  popupWidth: "450px",
 };
 
 export type ConstantsType = typeof constants;

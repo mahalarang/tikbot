@@ -8,3 +8,11 @@ ul,
 ol {
   list-style: none;
 }
+
+html {
+  font-size: 14px;
+}
+
+body {
+  font-size: 100%;
+}

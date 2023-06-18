@@ -9,6 +9,8 @@ export default defineConfig({
     alias: {
       "@": root,
       "@components": resolve(root, "components"),
+      "@styles": resolve(root, "styles"),
+      "@utils": resolve(root, "utils"),
     },
   },
   plugins: [

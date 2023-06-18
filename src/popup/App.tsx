@@ -1,22 +1,24 @@
 import styled from "@emotion/styled";
-import { css } from "@emotion/css";
+import PopHeader from "./components/PopHeader";
+import SidebarMenu from "./components/SidebarMenu";
+import { Box } from "@components/atoms";
 
 const App = () => {
   return (
     <AppContainer>
-      <h2>Hello World</h2>
-      <h4 className={TextMuted}>This setup using vite + react</h4>
+      <PopHeader />
+      <Box flex>
+        <Box width="30%">
+          <SidebarMenu />
+        </Box>
+        <Box width="70%">content</Box>
+      </Box>
     </AppContainer>
   );
 };
 
 const AppContainer = styled.div`
   width: ${({ theme }) => theme.constants.popupWidth};
-  padding: 10px;
-`;
-
-const TextMuted = css`
-  color: #999;
 `;
 
 export default App;
