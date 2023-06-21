@@ -21,6 +21,7 @@ export default defineConfig({
     createManifest(),
   ],
   build: {
+    minify: false,
     outDir,
     sourcemap: process.env.__DEV__ === "true",
     emptyOutDir: false,

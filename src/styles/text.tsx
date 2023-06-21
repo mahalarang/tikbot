@@ -13,3 +13,7 @@ export const TextLight = css`
 export const TextDark = css`
   color: ${theme.colors.black};
 `;
+
+export const textCenter = css`
+  text-align: center;
+`;
